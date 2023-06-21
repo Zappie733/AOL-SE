@@ -1,0 +1,412 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DatabaseCutsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Account">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Role_id" Type="Int32" />
+    <NavigationProperty Name="Admin" Relationship="Self.FK_Account_Admin" FromRole="Account" ToRole="Admin" />
+    <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
+    <NavigationProperty Name="Store" Relationship="Self.FK_Account_Store" FromRole="Account" ToRole="Store" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Account_User" FromRole="Account" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Admin" FromRole="Admin" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Antrian">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Nomor" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nomor" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Estimate_duration" Type="Time" Precision="7" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Username_user" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <NavigationProperty Name="Store" Relationship="Self.FK_Antrian_Store" FromRole="Antrian" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Order">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="User_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Store_username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Product_id" Type="Int32" />
+    <Property Name="User_phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Date" Type="DateTime" Precision="3" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Status_id" Type="Int32" />
+    <NavigationProperty Name="Order_status" Relationship="Self.FK_Order_Order_status" FromRole="Order" ToRole="Order_status" />
+    <NavigationProperty Name="Store" Relationship="Self.FK_Order_Store" FromRole="Order" ToRole="Store" />
+    <NavigationProperty Name="User" Relationship="Self.FK_Order_User" FromRole="Order" ToRole="User" />
+  </EntityType>
+  <EntityType Name="Order_status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Order_status" FromRole="Order_status" ToRole="Order" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="Username" />
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nama" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Harga" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Average_duration" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Description" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="Stock" Type="Int32" />
+    <NavigationProperty Name="Store" Relationship="Self.FK_Product_Store" FromRole="Product" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Promo">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Id" Type="Int32" />
+    <Property Name="Promo1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Store" Relationship="Self.FK_Promo_Store" FromRole="Promo" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Role" FromRole="Role" ToRole="Account" />
+  </EntityType>
+  <EntityType Name="Store">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type_id" Type="Int32" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Store" FromRole="Store" ToRole="Account" />
+    <NavigationProperty Name="Antrians" Relationship="Self.FK_Antrian_Store" FromRole="Store" ToRole="Antrian" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Store" FromRole="Store" ToRole="Order" />
+    <NavigationProperty Name="Products" Relationship="Self.FK_Product_Store" FromRole="Store" ToRole="Product" />
+    <NavigationProperty Name="Promo" Relationship="Self.FK_Promo_Store" FromRole="Store" ToRole="Promo" />
+    <NavigationProperty Name="Store_detail" Relationship="Self.FK_Store_detail_Store" FromRole="Store" ToRole="Store_detail" />
+    <NavigationProperty Name="Store_type" Relationship="Self.FK_Store_type" FromRole="Store" ToRole="Store_type" />
+  </EntityType>
+  <EntityType Name="Store_detail">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" />
+    <Property Name="Operational_hour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Store" Relationship="Self.FK_Store_detail_Store" FromRole="Store_detail" ToRole="Store" />
+  </EntityType>
+  <EntityType Name="Store_type">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Stores" Relationship="Self.FK_Store_type" FromRole="Store_type" ToRole="Store" />
+    <NavigationProperty Name="Temp_store" Relationship="Self.FK_Temp_store_Store_type" FromRole="Store_type" ToRole="Temp_store" />
+  </EntityType>
+  <EntityType Name="Temp_store">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Type_id" Type="Int32" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Location" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Operational_hour" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Status_id" Type="Int32" />
+    <NavigationProperty Name="Store_type" Relationship="Self.FK_Temp_store_Store_type" FromRole="Temp_store" ToRole="Store_type" />
+    <NavigationProperty Name="Temp_store_status" Relationship="Self.FK_Temp_store_Temp_store_status" FromRole="Temp_store" ToRole="Temp_store_status" />
+  </EntityType>
+  <EntityType Name="Temp_store_status">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Temp_store" Relationship="Self.FK_Temp_store_Temp_store_status" FromRole="Temp_store_status" ToRole="Temp_store" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Username" />
+    </Key>
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Gender" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_User" FromRole="User" ToRole="Account" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
+  </EntityType>
+  <Association Name="FK_Account_Admin">
+    <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Admin">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Account_Role">
+    <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Role">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Role_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Account_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Account_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Account" Type="Self.Account" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Account">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Antrian_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Antrian" Type="Self.Antrian" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Antrian">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Order_status">
+    <End Role="Order_status" Type="Self.Order_status" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Order_status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="Store_username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Order_User">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="Order" Type="Self.Order" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Order">
+        <PropertyRef Name="User_username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Product_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Product" Type="Self.Product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Product">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Promo_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Promo" Type="Self.Promo" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Promo">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Store_detail_Store">
+    <End Role="Store" Type="Self.Store" Multiplicity="1" />
+    <End Role="Store_detail" Type="Self.Store_detail" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Store">
+        <PropertyRef Name="Username" />
+      </Principal>
+      <Dependent Role="Store_detail">
+        <PropertyRef Name="Username" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Store_type">
+    <End Role="Store_type" Type="Self.Store_type" Multiplicity="0..1" />
+    <End Role="Store" Type="Self.Store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store_type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Store">
+        <PropertyRef Name="Type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Temp_store_Store_type">
+    <End Role="Store_type" Type="Self.Store_type" Multiplicity="0..1" />
+    <End Role="Temp_store" Type="Self.Temp_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Store_type">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Temp_store">
+        <PropertyRef Name="Type_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Temp_store_Temp_store_status">
+    <End Role="Temp_store_status" Type="Self.Temp_store_status" Multiplicity="0..1" />
+    <End Role="Temp_store" Type="Self.Temp_store" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Temp_store_status">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Temp_store">
+        <PropertyRef Name="Status_id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DatabaseCutsEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Accounts" EntityType="Self.Account" />
+    <EntitySet Name="Admins" EntityType="Self.Admin" />
+    <EntitySet Name="Antrians" EntityType="Self.Antrian" />
+    <EntitySet Name="Orders" EntityType="Self.Order" />
+    <EntitySet Name="Order_status" EntityType="Self.Order_status" />
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="Promoes" EntityType="Self.Promo" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="Stores" EntityType="Self.Store" />
+    <EntitySet Name="Store_detail" EntityType="Self.Store_detail" />
+    <EntitySet Name="Store_type" EntityType="Self.Store_type" />
+    <EntitySet Name="Temp_store" EntityType="Self.Temp_store" />
+    <EntitySet Name="Temp_store_status" EntityType="Self.Temp_store_status" />
+    <EntitySet Name="Users" EntityType="Self.User" />
+    <AssociationSet Name="FK_Account_Admin" Association="Self.FK_Account_Admin">
+      <End Role="Admin" EntitySet="Admins" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
+      <End Role="Role" EntitySet="Roles" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Account_Store" Association="Self.FK_Account_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Account" EntitySet="Accounts" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Antrian_Store" Association="Self.FK_Antrian_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Antrian" EntitySet="Antrians" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Order_status" Association="Self.FK_Order_Order_status">
+      <End Role="Order_status" EntitySet="Order_status" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_Store" Association="Self.FK_Order_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Order_User" Association="Self.FK_Order_User">
+      <End Role="User" EntitySet="Users" />
+      <End Role="Order" EntitySet="Orders" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Product_Store" Association="Self.FK_Product_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Product" EntitySet="Products" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Promo_Store" Association="Self.FK_Promo_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Promo" EntitySet="Promoes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Store_detail_Store" Association="Self.FK_Store_detail_Store">
+      <End Role="Store" EntitySet="Stores" />
+      <End Role="Store_detail" EntitySet="Store_detail" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Store_type" Association="Self.FK_Store_type">
+      <End Role="Store_type" EntitySet="Store_type" />
+      <End Role="Store" EntitySet="Stores" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Temp_store_Store_type" Association="Self.FK_Temp_store_Store_type">
+      <End Role="Store_type" EntitySet="Store_type" />
+      <End Role="Temp_store" EntitySet="Temp_store" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Temp_store_Temp_store_status" Association="Self.FK_Temp_store_Temp_store_status">
+      <End Role="Temp_store_status" EntitySet="Temp_store_status" />
+      <End Role="Temp_store" EntitySet="Temp_store" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

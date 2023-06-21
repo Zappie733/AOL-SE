@@ -1,0 +1,206 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Store.master.cs" Inherits="Cuts.View.Store.Store" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <meta name="viewport" content="width=device-width, scale=1.0" />
+
+    <title>Store Master</title>
+
+    <link href="../../Styling/Store/Master.css" rel="stylesheet" type="text/css" />
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <div id="top"></div>
+    <header>
+        <input type="checkbox" id="menu-bar">
+        <label for="menu-bar">&#9776;</label>
+
+        <div class="logo">
+            <a href="Home.aspx">
+                <img src="../../Images/Header/logo.png" alt="C"/> 
+                <p>uts</p>
+            </a> 
+        </div>
+        <nav>
+            <div class="div-option">
+                <a class="option home" href="Home.aspx">Home</a>
+            </div>
+            <div class="div-option">
+                <a class="option product" href="Product.aspx">Product</a>
+            </div>
+            <div class="div-option">
+                <a class="option promo" href="Promo.aspx">Promo</a>
+            </div>
+            <div class="div-option">
+                <a class="option report" href="Report.aspx">Report</a>
+            </div>
+        </nav>
+        <div class="div-Profile">
+            <a class="Profile" href="Profile.aspx">
+                <img src="../../Images/Header/Profile.png" alt="C"/> 
+                David
+            </a>
+        </div>
+    </header>
+
+    <form id="form1" runat="server">
+        <div class="main">
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+        </div>
+    </form>
+
+    <footer>
+        <div class="top">
+            <div class="left">
+                <div class="title">
+                    <marquee direction="right"; behavior="alternate";>Cuts</marquee>
+                </div>
+                <div class="contact">
+                    <div class="div-contact">
+                        <p class="p-contact">
+                            <span class="text-contact">Contact</span> Us
+                        </p>
+                    </div>
+                    <form>
+                        <div>
+                            <p class="form-title">Email</p>
+                            <input class="email-box" type="email" placeholder="Enter your email here" required>
+                        </div>
+                        <div>
+                            <p class="form-title">Message</p>
+                            <textarea class="message-box" cols="30" rows="2" placeholder="Enter your message here" required></textarea>
+                        </div>
+                        <div>
+                            <button class="button" type="submit">Send</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mid1-mid2-mid3">
+                <div class="mid1-mid2">
+                    <div class="mid1">
+                        <p class="download-text">
+                            <span class="text">Download</span> Cuts <span class="text">On</span> Mobile
+                        </p>
+                        <p class="available-text">Available for Android and Ios</p>
+                        <div class="flex-img">
+                            <div>
+                                <a href="https://play.google.com/store?utm_source=apac_med&utm_medium=hasem&utm_content=Aug2021&utm_campaign=Evergreen&pcampaignid=MKT-EDR-apac-id-1003227-med-hasem-py-Evergreen-Aug2021-Text_Search_BKWS-BKWS%7cONSEM_kwid_43700065961766560_creativeid_541258268578_device_c&gclid=CjwKCAjwve2TBhByEiwAaktM1Eh2S8NV0L2IolcR_y1wqNGnpw_6bH9upKCWx6vJbejldh3mEgAzwBoCIqAQAvD_BwE&gclsrc=aw.ds">
+                                    <img class="googleplay-img" src="../../Images/Footer/google play.png" alt="Google Play">
+                                </a>
+                            </div>
+                            <div>
+                                <a href="https://apps.apple.com/id/app/apple-store/id375380948?l=id">
+                                    <img src="../../Images/Footer/appstore.jpg" alt="App Store">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="mid2">
+                        <p>
+                            <span class="sosial-text">Sosial</span> Media
+                        </p>
+                        <div class="flex-baris">
+                            <div class="flex-icon">
+                                <div>
+                                    <a href="https://www.instagram.com/">
+                                        <img src="../../Images/Footer/instagram.png" alt="instagram">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://www.youtube.com/">
+                                        <img src="../../Images/Footer/youtube.png" alt="youtube">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="flex-icon">
+                                <div>
+                                    <a href="https://www.facebook.com/">
+                                        <img src="../../Images/Footer/facebook.png" alt="facebook">
+                                    </a>
+                                </div>
+                                <div>
+                                    <a href="https://twitter.com/">
+                                        <img src="../../Images/Footer/twitter.png" alt="twitter">
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mid3">
+                    <p class="country-text">
+                        Current <span class="text">Avaiable</span> Country
+                    </p>
+                    <div class="div-country">
+                        <div class="country">
+                            <img src="../../Images/Footer/indoflag.png" alt="Indonesia">
+                        </div>
+                        <div class="country">
+                            <img src="../../Images/Footer/singaflag.png" alt="Singapore">
+                        </div>
+                        <div class="country">
+                            <img src="../../Images/Footer/malayflag.jpg" alt="Malaysia">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mid4">
+                <p class="quicklink">
+                    <span class="quick-text">Quick</span> Links
+                </p>
+                <div class="div-links">
+                    <div class="link">
+                        <a href="Home.aspx">Home</a>
+                    </div>
+                    <div class="link">
+                        <a href="Product.aspx">Product</a>
+                    </div>
+                    <div class="link">
+                        <a href="Promo.aspx">Promo</a>
+                    </div>
+                    <div class="link">
+                        <a href="Report.aspx">Report</a>
+                    </div>
+                    <div class="link">
+                        <a href="Profile.aspx">Profile</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right">
+                <div>
+                    <a href="#top">
+                        <span class="arrow">&#8593;</span>
+                    </a>
+                </div>
+                <div>
+                    <a href="#top">
+                        <p>U</p>
+                    </a>
+                </div>
+                <div>
+                    <a href="#top">
+                        <p>P</p>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="middle">
+            <hr class="line">
+        </div>
+        <div class="bottom">
+            <p>Created By <span class="name">DJ&Team</span>| &#169; 2022 All Right Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>

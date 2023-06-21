@@ -1,0 +1,167 @@
+﻿.main .container {
+    margin: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    border: 4px double yellow;
+}
+.main .container .container-title{
+    display: flex;
+    flex-direction: column;
+    padding: 15px 30px;
+    position: relative;
+    border-bottom: 4px double yellow;
+}
+.main .container .container-title .text{
+    text-align: center;
+}
+.main .container .container-title .text p{
+    color: white;
+    font-size: 100px;
+    font-family: Overlock;
+    font-weight: bold;
+    animation: efek 4s infinite;
+}
+@keyframes efek {
+    0%{
+        color: white;
+    }
+    50%{
+        color: white;
+    }
+    55%{
+        color: yellow;
+    }
+    95% {
+        color: yellow;
+    }
+}
+.main .container .container-title .div-searchNfilter {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+.main .container .container-title .div-searchNfilter input{
+    border: 2px solid white;
+    flex: 1;
+    max-width: 600px;
+    background-color: transparent;
+    border-radius: 10px 0px 0px 10px;
+    padding-left: 10px;
+    font-size: 15px;
+    color: white;
+}
+.main .container .container-title .div-searchNfilter input::placeholder{
+    font-size: 15px;
+    color: white;
+}
+.main .container .container-title .div-searchNfilter input:focus{
+    outline-color: yellow;
+}
+.main .container .container-title .div-searchNfilter button{
+    width: 50px;
+    height: 50px;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.main .container .container-title .div-searchNfilter .but1{
+    margin-right: 20px;
+    background-color: rgb(192, 189, 189);
+    border: 2px solid white;
+    border-left: 1px solid white;
+    border-radius: 0px 10px 10px 0px;
+}
+.main .container .container-title .div-searchNfilter .but2{
+    background-color: rgb(192, 192, 189);
+    border: 2px solid white;
+    border-radius: 25px;
+    position: relative;
+    transition: background-color 0.5s;
+}
+.main .container .container-title .div-searchNfilter .but2:hover{
+    background-color: yellow;
+}
+.main .container .container-title .div-searchNfilter .but2:hover .tooltip{
+    opacity: 1;
+}
+.main .container .container-title .div-searchNfilter .but2 .tooltip{
+    color: white;
+    position: absolute;
+    bottom: -25px;
+    white-space: nowrap;
+    font-size: 15px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s;
+}
+.main .container .container-title .div-searchNfilter button img{
+    width: 75%;
+}
+
+.main .container .container-content{
+    display:flex;
+    flex-direction:column;
+}
+.main .container .container-content .div-block{
+    display:flex;
+    flex-direction:row;
+}
+.main .container .container-content .article{
+    display:flex;
+    flex-direction:row;
+    border: 2px solid white;
+    margin:10px;
+    padding:20px;
+}
+.main .container .container-content .article .kiri{
+    flex:1;
+    display:flex;
+    flex-direction:column;
+    margin-right:15px;
+}
+.main .container .container-content .article .kiri .div-img{
+    padding: 1rem;
+}
+.main .container .container-content .article .kiri .div-img img{
+    width:100%;
+}
+.main .container .container-content .article .kiri .div-penulis{
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+    justify-content:center;
+}
+.main .container .container-content .article .kiri .div-penulis p{
+    font-size: 1.8rem;
+}
+.main .container .container-content .article .kanan{
+    flex:3;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+.main .container .container-content .article .kanan .judul{
+   font-size: 3rem;
+}
+.main .container .container-content .article .kanan .text{
+   font-size: 1.7rem;
+}
+.main .container .container-content .article .kanan .div-detail{
+    margin-top:15px;
+}
+.main .container .container-content .article .kanan .div-detail a{
+    text-decoration:none;
+    padding: 6px 14px;
+    font-size:2rem;
+    background-color:gray;
+    border-radius:5px;
+    transition: all 0.5s;
+}
+.main .container .container-content .article .kanan .div-detail a:hover{
+    color:yellow;
+    opacity:0.7;
+}
