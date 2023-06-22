@@ -7,10 +7,10 @@
       <Schema Namespace="DatabaseCutsModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Account">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Username" />
           </Key>
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Username" Type="varchar" MaxLength="50" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Role_id" Type="int" />
         </EntityType>
         <EntityType Name="Admin">
@@ -146,18 +146,6 @@
           <Property Name="Email" Type="varchar" MaxLength="50" />
           <Property Name="City" Type="varchar" MaxLength="50" />
         </EntityType>
-        <Association Name="FK_Account_Admin">
-          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="Username" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="Username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Account_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -170,26 +158,14 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Account_Store">
-          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+        <Association Name="FK_Admin_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Store">
+            <Principal Role="Account">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="Username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Account_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="User">
-              <PropertyRef Name="Username" />
-            </Principal>
-            <Dependent Role="Account">
+            <Dependent Role="Admin">
               <PropertyRef Name="Username" />
             </Dependent>
           </ReferentialConstraint>
@@ -266,6 +242,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Store_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="Store">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Store_detail_Store">
           <End Role="Store" Type="Self.Store" Multiplicity="1" />
           <End Role="Store_detail" Type="Self.Store_detail" Multiplicity="0..1" />
@@ -314,6 +302,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_User_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="User">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="DatabaseCutsModelStoreContainer">
           <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Admin" EntityType="Self.Admin" Schema="dbo" store:Type="Tables" />
@@ -329,21 +329,13 @@
           <EntitySet Name="Temp_store" EntityType="Self.Temp_store" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Temp_store_status" EntityType="Self.Temp_store_status" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="User" EntityType="Self.User" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Account_Admin" Association="Self.FK_Account_Admin">
-            <End Role="Admin" EntitySet="Admin" />
-            <End Role="Account" EntitySet="Account" />
-          </AssociationSet>
           <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
             <End Role="Role" EntitySet="Role" />
             <End Role="Account" EntitySet="Account" />
           </AssociationSet>
-          <AssociationSet Name="FK_Account_Store" Association="Self.FK_Account_Store">
-            <End Role="Store" EntitySet="Store" />
+          <AssociationSet Name="FK_Admin_Account" Association="Self.FK_Admin_Account">
             <End Role="Account" EntitySet="Account" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
-            <End Role="User" EntitySet="User" />
-            <End Role="Account" EntitySet="Account" />
+            <End Role="Admin" EntitySet="Admin" />
           </AssociationSet>
           <AssociationSet Name="FK_Antrian_Store" Association="Self.FK_Antrian_Store">
             <End Role="Store" EntitySet="Store" />
@@ -369,6 +361,10 @@
             <End Role="Store" EntitySet="Store" />
             <End Role="Promo" EntitySet="Promo" />
           </AssociationSet>
+          <AssociationSet Name="FK_Store_Account" Association="Self.FK_Store_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Store" EntitySet="Store" />
+          </AssociationSet>
           <AssociationSet Name="FK_Store_detail_Store" Association="Self.FK_Store_detail_Store">
             <End Role="Store" EntitySet="Store" />
             <End Role="Store_detail" EntitySet="Store_detail" />
@@ -385,6 +381,10 @@
             <End Role="Temp_store_status" EntitySet="Temp_store_status" />
             <End Role="Temp_store" EntitySet="Temp_store" />
           </AssociationSet>
+          <AssociationSet Name="FK_User_Account" Association="Self.FK_User_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="User" EntitySet="User" />
+          </AssociationSet>
         </EntityContainer>
       </Schema>
     </edmx:StorageModels>
@@ -393,15 +393,15 @@
       <Schema Namespace="DatabaseCutsModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Account">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="Username" />
           </Key>
           <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Role_id" Type="Int32" />
-          <NavigationProperty Name="Admin" Relationship="Self.FK_Account_Admin" FromRole="Account" ToRole="Admin" />
           <NavigationProperty Name="Role" Relationship="Self.FK_Account_Role" FromRole="Account" ToRole="Role" />
-          <NavigationProperty Name="Store" Relationship="Self.FK_Account_Store" FromRole="Account" ToRole="Store" />
-          <NavigationProperty Name="User" Relationship="Self.FK_Account_User" FromRole="Account" ToRole="User" />
+          <NavigationProperty Name="Admin" Relationship="Self.FK_Admin_Account" FromRole="Account" ToRole="Admin" />
+          <NavigationProperty Name="Store" Relationship="Self.FK_Store_Account" FromRole="Account" ToRole="Store" />
+          <NavigationProperty Name="User" Relationship="Self.FK_User_Account" FromRole="Account" ToRole="User" />
         </EntityType>
         <EntityType Name="Admin">
           <Key>
@@ -413,7 +413,7 @@
           <Property Name="Gender" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Admin" FromRole="Admin" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Admin_Account" FromRole="Admin" ToRole="Account" />
         </EntityType>
         <EntityType Name="Antrian">
           <Key>
@@ -494,7 +494,7 @@
           <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Type_id" Type="Int32" />
-          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_Store" FromRole="Store" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_Store_Account" FromRole="Store" ToRole="Account" />
           <NavigationProperty Name="Antrians" Relationship="Self.FK_Antrian_Store" FromRole="Store" ToRole="Antrian" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_Store" FromRole="Store" ToRole="Order" />
           <NavigationProperty Name="Products" Relationship="Self.FK_Product_Store" FromRole="Store" ToRole="Product" />
@@ -557,21 +557,9 @@
           <Property Name="Phone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="City" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Accounts" Relationship="Self.FK_Account_User" FromRole="User" ToRole="Account" />
+          <NavigationProperty Name="Account" Relationship="Self.FK_User_Account" FromRole="User" ToRole="Account" />
           <NavigationProperty Name="Orders" Relationship="Self.FK_Order_User" FromRole="User" ToRole="Order" />
         </EntityType>
-        <Association Name="FK_Account_Admin">
-          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Admin">
-              <PropertyRef Name="Username" />
-            </Principal>
-            <Dependent Role="Account">
-              <PropertyRef Name="Username" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_Account_Role">
           <End Role="Role" Type="Self.Role" Multiplicity="0..1" />
           <End Role="Account" Type="Self.Account" Multiplicity="*" />
@@ -584,26 +572,38 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Account_Store">
-          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+        <Association Name="FK_Admin_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Admin" Type="Self.Admin" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="Store">
+            <Principal Role="Account">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="Account">
+            <Dependent Role="Admin">
               <PropertyRef Name="Username" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Account_User">
-          <End Role="User" Type="Self.User" Multiplicity="0..1" />
-          <End Role="Account" Type="Self.Account" Multiplicity="*" />
+        <Association Name="FK_Store_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Store" Type="Self.Store" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="User">
+            <Principal Role="Account">
               <PropertyRef Name="Username" />
             </Principal>
-            <Dependent Role="Account">
+            <Dependent Role="Store">
+              <PropertyRef Name="Username" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_User_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="User" Type="Self.User" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="Username" />
+            </Principal>
+            <Dependent Role="User">
               <PropertyRef Name="Username" />
             </Dependent>
           </ReferentialConstraint>
@@ -728,7 +728,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="DatabaseCutsEntities1" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="DatabaseCutsEntities2" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Accounts" EntityType="Self.Account" />
           <EntitySet Name="Admins" EntityType="Self.Admin" />
           <EntitySet Name="Antrians" EntityType="Self.Antrian" />
@@ -743,21 +743,21 @@
           <EntitySet Name="Temp_store" EntityType="Self.Temp_store" />
           <EntitySet Name="Temp_store_status" EntityType="Self.Temp_store_status" />
           <EntitySet Name="Users" EntityType="Self.User" />
-          <AssociationSet Name="FK_Account_Admin" Association="Self.FK_Account_Admin">
-            <End Role="Admin" EntitySet="Admins" />
-            <End Role="Account" EntitySet="Accounts" />
-          </AssociationSet>
           <AssociationSet Name="FK_Account_Role" Association="Self.FK_Account_Role">
             <End Role="Role" EntitySet="Roles" />
             <End Role="Account" EntitySet="Accounts" />
           </AssociationSet>
-          <AssociationSet Name="FK_Account_Store" Association="Self.FK_Account_Store">
-            <End Role="Store" EntitySet="Stores" />
+          <AssociationSet Name="FK_Admin_Account" Association="Self.FK_Admin_Account">
             <End Role="Account" EntitySet="Accounts" />
+            <End Role="Admin" EntitySet="Admins" />
           </AssociationSet>
-          <AssociationSet Name="FK_Account_User" Association="Self.FK_Account_User">
-            <End Role="User" EntitySet="Users" />
+          <AssociationSet Name="FK_Store_Account" Association="Self.FK_Store_Account">
             <End Role="Account" EntitySet="Accounts" />
+            <End Role="Store" EntitySet="Stores" />
+          </AssociationSet>
+          <AssociationSet Name="FK_User_Account" Association="Self.FK_User_Account">
+            <End Role="Account" EntitySet="Accounts" />
+            <End Role="User" EntitySet="Users" />
           </AssociationSet>
           <AssociationSet Name="FK_Antrian_Store" Association="Self.FK_Antrian_Store">
             <End Role="Store" EntitySet="Stores" />
@@ -805,7 +805,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="DatabaseCutsModelStoreContainer" CdmEntityContainer="DatabaseCutsEntities1">
+        <EntityContainerMapping StorageEntityContainer="DatabaseCutsModelStoreContainer" CdmEntityContainer="DatabaseCutsEntities2">
           <EntitySetMapping Name="Accounts">
             <EntityTypeMapping TypeName="DatabaseCutsModel.Account">
               <MappingFragment StoreEntitySet="Account">

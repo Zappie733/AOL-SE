@@ -14,12 +14,6 @@ namespace Cuts.Model
     
     public partial class Admin
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Admin()
-        {
-            this.Accounts = new HashSet<Account>();
-        }
-    
         public string Username { get; set; }
         public string Password { get; set; }
         public string Name { get; set; }
@@ -27,7 +21,6 @@ namespace Cuts.Model
         public string Phone { get; set; }
         public string Email { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Account> Accounts { get; set; }
+        public virtual Account Account { get; set; }
     }
 }

@@ -13,10 +13,10 @@ namespace Cuts.Model
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class DatabaseCutsEntities1 : DbContext
+    public partial class DatabaseCutsEntities2 : DbContext
     {
-        public DatabaseCutsEntities1()
-            : base("name=DatabaseCutsEntities1")
+        public DatabaseCutsEntities2()
+            : base("name=DatabaseCutsEntities2")
         {
         }
     

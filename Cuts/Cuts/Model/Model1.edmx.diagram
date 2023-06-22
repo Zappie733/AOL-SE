@@ -4,25 +4,25 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="941f71c7e2644b61bafc9bc118046f4b" Name="Diagram1" ZoomLevel="54">
-        <EntityTypeShape EntityType="DatabaseCutsModel.Account" Width="1.5" PointX="15.25" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Admin" Width="1.5" PointX="18.875" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Antrian" Width="1.5" PointX="9.875" PointY="13.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Order" Width="1.5" PointX="14.625" PointY="5.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Order_status" Width="1.5" PointX="14.625" PointY="3" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Product" Width="1.5" PointX="12.875" PointY="14.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Promo" Width="1.5" PointX="11.875" PointY="7.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Role" Width="1.5" PointX="15.25" PointY="14.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Store" Width="1.5" PointX="12.125" PointY="10.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Store_detail" Width="1.5" PointX="9.875" PointY="10.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Store_type" Width="1.5" PointX="9.125" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Temp_store" Width="1.5" PointX="5.875" PointY="6.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.Temp_store_status" Width="1.5" PointX="3" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="DatabaseCutsModel.User" Width="1.5" PointX="17.375" PointY="5.25" IsExpanded="true" />
-        <AssociationConnector Association="DatabaseCutsModel.FK_Account_Admin" ManuallyRouted="false" />
+      <Diagram DiagramId="77e6aac1961241b480359bfc910921af" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="DatabaseCutsModel.Account" Width="1.5" PointX="13.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Admin" Width="1.5" PointX="16" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Antrian" Width="1.5" PointX="6.875" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Order" Width="1.5" PointX="11.375" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Order_status" Width="1.5" PointX="9" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Product" Width="1.5" PointX="9.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Promo" Width="1.5" PointX="9.125" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Role" Width="1.5" PointX="13.875" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Store" Width="1.5" PointX="11.25" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Store_detail" Width="1.5" PointX="11.375" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Store_type" Width="1.5" PointX="8.625" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Temp_store" Width="1.5" PointX="6.625" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.Temp_store_status" Width="1.5" PointX="4.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="DatabaseCutsModel.User" Width="1.5" PointX="14.625" PointY="5.625" IsExpanded="true" />
         <AssociationConnector Association="DatabaseCutsModel.FK_Account_Role" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseCutsModel.FK_Account_Store" ManuallyRouted="false" />
-        <AssociationConnector Association="DatabaseCutsModel.FK_Account_User" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseCutsModel.FK_Admin_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseCutsModel.FK_Store_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="DatabaseCutsModel.FK_User_Account" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseCutsModel.FK_Antrian_Store" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseCutsModel.FK_Order_Order_status" ManuallyRouted="false" />
         <AssociationConnector Association="DatabaseCutsModel.FK_Order_Store" ManuallyRouted="false" />
