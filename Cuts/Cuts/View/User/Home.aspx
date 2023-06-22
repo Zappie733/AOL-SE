@@ -105,9 +105,7 @@
             </div>
             <div class="text">
                 <p>Barber</p>
-                <a href="">
-                    <button>Check Now</button>
-                </a>
+                <a class="check" href="Explore.aspx">Check Now</a>                
             </div>
         </div>
     </div>
@@ -116,9 +114,7 @@
         <div class="left">
             <div class="text">
                 <p>Salon</p>
-                <a href="">
-                    <button>Check Now</button>
-                </a>
+                <a class="check" href="Explore.aspx">Check Now</a>
             </div>
             <div class="frame">
                 <div class="slider-container">
@@ -175,7 +171,7 @@
                     </div>
                     <div class="btn">
                         <div class="div-but">
-                            <button>Details</button>
+                            <a class="detail" href="DetailExplore.aspx">Detail</a>
                         </div>
                     </div>
                 </div>
@@ -204,7 +200,7 @@
                     </div>
                     <div class="btn">
                         <div class="div-but">
-                            <button>Details</button>
+                            <a class="detail" href="DetailExplore.aspx">Detail</a>
                         </div>
                     </div>
                 </div>

@@ -130,6 +130,7 @@
     <Content Include="Styling\Admin\Master.css" />
     <Content Include="Styling\Admin\Store.css" />
     <Content Include="Styling\Admin\User.css" />
+    <Content Include="Styling\Guest\Home.css" />
     <Content Include="Styling\Guest\Login.css" />
     <Content Include="Styling\Guest\Master.css" />
     <Content Include="Styling\Guest\Register.css" />
