@@ -4,9 +4,9 @@
 
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-        <div class="container">
+    <div class="container">
         <div class="title">
-            <p>List User</p>
+            <p>List Store</p>
         </div>
         <div class="row">
             <div class="col header">
@@ -26,6 +26,9 @@
             </div>
             <div class="col header">
                 <p>Status</p>
+            </div>
+            <div class="col header">
+                <p>Action</p>
             </div>
         </div>
         <%for(int i=0; i<5; i++)
@@ -48,6 +51,9 @@
                 </div>
                 <div class="col">
                     <p>Status</p>
+                </div>
+                <div class="col">
+                    <a href="StoreDetail.aspx">Detail</a>
                 </div>
             </div>
         <%} %>

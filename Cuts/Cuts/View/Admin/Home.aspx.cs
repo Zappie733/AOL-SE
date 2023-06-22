@@ -13,5 +13,15 @@ namespace Cuts.View.Admin
         {
 
         }
+
+        protected void createButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void rejectButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -27,6 +27,9 @@
             <div class="col header">
                 <p>City</p>
             </div>
+            <div class="col header">
+                <p>Action</p>
+            </div>
         </div>
         <%for(int i=0; i<5; i++)
             { %>
@@ -48,6 +51,9 @@
                 </div>
                 <div class="col">
                     <p>City</p>
+                </div>
+                <div class="col">
+                    <a href="UserDetail.aspx">Detail</a>
                 </div>
             </div>
         <%} %>

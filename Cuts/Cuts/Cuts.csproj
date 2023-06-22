@@ -127,9 +127,12 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="Styling\Admin\Home.css" />
     <Content Include="Styling\Admin\Master.css" />
     <Content Include="Styling\Admin\Store.css" />
+    <Content Include="Styling\Admin\StoreDetail.css" />
     <Content Include="Styling\Admin\User.css" />
+    <Content Include="Styling\Admin\UserDetail.css" />
     <Content Include="Styling\Guest\Home.css" />
     <Content Include="Styling\Guest\Login.css" />
     <Content Include="Styling\Guest\Master.css" />
@@ -149,7 +152,9 @@
     <Content Include="View\Admin\Home.aspx" />
     <Content Include="View\Admin\Profile.aspx" />
     <Content Include="View\Admin\Store.aspx" />
+    <Content Include="View\Admin\StoreDetail.aspx" />
     <Content Include="View\Admin\User.aspx" />
+    <Content Include="View\Admin\UserDetail.aspx" />
     <Content Include="View\Guest\Home.aspx" />
     <Content Include="View\Guest\Login.aspx" />
     <Content Include="View\Guest\Register.aspx" />
@@ -254,12 +259,26 @@
     <Compile Include="View\Admin\Store.aspx.designer.cs">
       <DependentUpon>Store.aspx</DependentUpon>
     </Compile>
+    <Compile Include="View\Admin\StoreDetail.aspx.cs">
+      <DependentUpon>StoreDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\StoreDetail.aspx.designer.cs">
+      <DependentUpon>StoreDetail.aspx</DependentUpon>
+    </Compile>
     <Compile Include="View\Admin\User.aspx.cs">
       <DependentUpon>User.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="View\Admin\User.aspx.designer.cs">
       <DependentUpon>User.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="View\Admin\UserDetail.aspx.cs">
+      <DependentUpon>UserDetail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="View\Admin\UserDetail.aspx.designer.cs">
+      <DependentUpon>UserDetail.aspx</DependentUpon>
     </Compile>
     <Compile Include="View\Guest\Guess.Master.cs">
       <DependentUpon>Guess.Master</DependentUpon>
